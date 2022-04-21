@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** B-PSU-101-MAR-1-1-minishell1-thibaut.tran
+** B-PSU-210-MAR-2-1-minishell2-thibaut.tran
 ** File description:
 ** my_unsetenv.c
 */
@@ -37,8 +37,7 @@ int my_unsetenv(my_env_t *m, int *ret)
     if (m->tab[1] == NULL) {
         *ret = 1;
         return (print_error(m->tab[0], ": Too few arguments.\n"));
-    }
-    else
+    } else
         if_unsetenv(m);
     return (0);
 }

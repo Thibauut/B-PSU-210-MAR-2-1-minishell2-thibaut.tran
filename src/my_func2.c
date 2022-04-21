@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2021
-** B-PSU-101-MAR-1-1-minishell1-thibaut.tran
+** B-PSU-210-MAR-2-1-minishell2-thibaut.tran
 ** File description:
-** my_func_2.c
+** my_func2.c
 */
 
 #include "../include/my.h"

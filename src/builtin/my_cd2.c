@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2021
-** B-PSU-101-MAR-1-1-minishell1-thibaut.tran
+** B-PSU-210-MAR-2-1-minishell2-thibaut.tran
 ** File description:
-** my_cd_env.c
+** my_cd2.c
 */
 
 #include "../../include/my.h"
@@ -42,7 +42,7 @@ int my_env_exist_for_cd(my_env_t *m)
     return (0);
 }
 
-char *clean_get_home(char *home)
+char *clean_get(char *home)
 {
     char *tmp = malloc(sizeof(char) * my_strlen(home) + 1);
     int j = 0, i = 0, verif = 0;

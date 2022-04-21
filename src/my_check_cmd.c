@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** B-PSU-101-MAR-1-1-minishell1-thibaut.tran
+** B-PSU-210-MAR-2-1-minishell2-thibaut.tran
 ** File description:
 ** my_check_cmd.c
 */
@@ -18,7 +18,7 @@ int my_cmd(my_env_t *m, int *ret)
     return (0);
 }
 
-int check_cmd(my_env_t *m, int *ret)
+int check_cmd(char *line, my_env_t *m, int *ret)
 {
     if (m_cmp(m->tab[0], "exit") == 0 || m_cmp(m->tab[0], "setenv") == 0
     || m_cmp(m->tab[0], "unsetenv") == 0 || m_cmp(m->tab[0], "cd") == 0
@@ -26,6 +26,21 @@ int check_cmd(my_env_t *m, int *ret)
         my_cmd(m, ret);
     else {
         if (path_cmd(m, ret) == 0) {
+            *ret = 1;
+            return (print_error(m->tab[0], ": Command not found.\n"));
+        }
+    }
+    return (0);
+}
+
+int check_cmd2(char *line, my_env_t *m, int *ret)
+{
+    if (m_cmp(m->tab[0], "exit") == 0 || m_cmp(m->tab[0], "setenv") == 0
+    || m_cmp(m->tab[0], "unsetenv") == 0 || m_cmp(m->tab[0], "cd") == 0
+    || m_cmp(m->tab[0], "env") == 0 || my_strcmp2(m->tab[0], "./") == 0)
+        my_cmd(m, ret);
+    else {
+        if (path_cmd2(m, ret) == 0) {
             *ret = 1;
             return (print_error(m->tab[0], ": Command not found.\n"));
         }

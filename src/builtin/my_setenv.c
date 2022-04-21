@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** B-PSU-101-MAR-1-1-minishell1-thibaut.tran
+** B-PSU-210-MAR-2-1-minishell2-thibaut.tran
 ** File description:
 ** my_setenv.c
 */
@@ -76,8 +76,7 @@ int my_setenv(my_env_t *m, int *ret)
     if (m->tab[1] != NULL && m->tab[2] != NULL && m->tab[3]) {
         *ret = 1;
         return (print_error(m->tab[0], error3));
-    }
-    else
+    } else
         if_setenv(m);
     return (0);
 }

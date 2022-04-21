@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** B-PSU-101-MAR-1-1-minishell1-thibaut.tran
+** B-PSU-210-MAR-2-1-minishell2-thibaut.tran
 ** File description:
 ** my.h
 */
@@ -15,28 +15,35 @@
 #include <errno.h>
 #include <dirent.h>
 #include <sys/stat.h>
+#include <fcntl.h>
 #define m_len my_strlen
 #define m_cmp my_strcmp
 #define m_cpy my_strcpy
 
 #ifndef MY_H_
-#define MY_H_
+    #define MY_H_
 
 typedef struct env_s {
     char *refresh_pwd;
     char *old_pwd;
-    char **tab_pwd;
-    char **tab;
-    char **path;
-    char **env;
-    char **tmp_env;
-    char *str;
-    char *str2;
+    char **tab_pwd, **tab, **path;
+    char **path_cmd, **path_cmd2;
+    char **env, **tmp_env;
+    char *str, *str2;
     char *stock;
     int verif;
+    char *line;
+    char *tmp;
+    char *file;
+    int save, save2;
+    char *first_arg;
+    char *new_line, *test;
+    int fd;
+    int verif_dup;
+    int save_in, save_out;
 } my_env_t;
 
-int my_prompt(my_env_t *m, int *ret);
+int my_shell(my_env_t *m, int *ret);
 int tab_len(char **tab);
 char *my_strdup(char *str);
 void my_putchar(char c);
@@ -53,11 +60,11 @@ char *my_strcpy(char *dest, char const *src);
 char **check_spaces(char **tab, char limit);
 char *my_strcat(char *dest, char const *src);
 int my_cmd(my_env_t *m, int *ret);
-int check_cmd(my_env_t *m, int *ret);
+int check_cmd(char *line, my_env_t *m, int *ret);
 int path_cmd(my_env_t *m, int *ret);
 char **get_path(char **env);
 char *clean_line(char *line);
-void my_exec(char *path, char **tab, char **env, int *ret);
+void my_exec(char *path, char **env, int *ret, my_env_t *m);
 void my_putstr_error(char *str);
 int print_error(char *str, char *str2);
 int cd(my_env_t *m, int *ret);
@@ -85,10 +92,36 @@ int my_env_exist_for_cd(my_env_t *m);
 int exist_setenv_for_cd(my_env_t *m, char *str);
 int if_setenv_for_cd(my_env_t *m);
 int my_setenv_for_cd(my_env_t *m, int *ret);
-char *clean_get_home(char *home);
+char *clean_get(char *home);
 int pwd_tab(my_env_t *m);
 char *my_get_line(char **env, char *arg);
-int my_semicolon(char *line, my_env_t *m, int *ret);
+char *my_semicolon(my_env_t *m, int *ret);
 int check_semicolon(char *line);
+char *my_pipe(my_env_t *m, int  *ret);
+int check_pipe(char *line);
+char *my_redirection(my_env_t *m, int  *ret, int i);
+void get_first_arg(my_env_t *m, char c);
+void get_last_arg(my_env_t *m, char c);
+void get_file_name(my_env_t *m, char c);
+int check_limit_name(my_env_t *m, int i, int j);
+int check_limit_last(my_env_t *m, int i, int j);
+void get_file_name_double(my_env_t *m, char c);
+void get_last_arg_double(my_env_t *m, char c);
+int check_limit_last_double(my_env_t *m, int i, int j);
+char *clean_name(char *file);
+char *my_entry(my_env_t *m, int *ret, int i);
+void fix_dup(my_env_t *m);
+int path_cmd2(my_env_t *m, int *ret);
+int check_cmd2(char *line, my_env_t *m, int *ret);
+void my_exec2(char *path, char **env, int *ret, my_env_t *m);
+void get_entry_arg(my_env_t *m, int *ret);
+void get_last_entry_arg(my_env_t *m, char c);
+void get_first_entry_arg(my_env_t *m, int  *ret);
+void init_pipe_arg(my_env_t *m, int *ret);
+void get_last_pipe(my_env_t *m, char c);
+void pipe_error(pid_t pid, int pipefd);
+void get_pipe_arg(my_env_t *m, int *ret);
+void get_last_pipe_arg(my_env_t *m, char c);
+char *get_new_line(my_env_t *m, int *ret);
 
 #endif

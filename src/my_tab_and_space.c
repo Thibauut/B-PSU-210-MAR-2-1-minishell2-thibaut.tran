@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** B-PSU-101-MAR-1-1-minishell1-thibaut.tran
+** B-PSU-210-MAR-2-1-minishell2-thibaut.tran
 ** File description:
 ** my_tab_and_space.c
 */
@@ -11,6 +11,8 @@ char *clean_line(char *line)
 {
     char *tmp = my_strdup(line);
     tmp[my_strlen(tmp) - 1] = '\0';
+    tmp = tab_to_space(tmp);
+    tmp = rm_extra_spaces(tmp);
     return (tmp);
 }
 

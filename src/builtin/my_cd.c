@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2021
-** B-PSU-101-MAR-1-1-minishell2-thibaut.tran
+** B-PSU-210-MAR-2-1-minishell2-thibaut.tran
 ** File description:
 ** my_cd.c
 */
@@ -17,8 +17,7 @@ char *cd_checker(my_env_t *m, int *ret)
             return (my_itoa(1));
         else
             str = my_strdup(m->old_pwd);
-    }
-    else
+    } else
         str = my_strdup(m->tab[1]);
     return (str);
 }
@@ -29,8 +28,7 @@ int exec_cd(char *str, int *ret, my_env_t *m)
         m->old_pwd = my_get_line(m->env, "PWD=");
         chdir(str);
         m->refresh_pwd = getcwd(m->refresh_pwd, 4096);
-    }
-    else {
+    } else {
         *ret = 1;
         print_error(m->tab[0], ": No such file or directory.\n");
         return (1);
@@ -45,7 +43,8 @@ int cd(my_env_t *m, int *ret)
         *ret = 1;
         return (print_error(m->tab[0], ": Too many arguments.\n"));
     }
-    str = cd_checker(m, ret); DIR *is_dir = opendir(str);
+    str = cd_checker(m, ret);
+    DIR *is_dir = opendir(str);
     if (my_strcmp(str, my_itoa(1)) == 0) {
         *ret = 1;
         return (print_error("", ": No such file or directory.\n"));
