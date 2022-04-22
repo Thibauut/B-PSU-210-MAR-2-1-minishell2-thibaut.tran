@@ -7,11 +7,6 @@
 
 #include "../include/my.h"
 
-#define simple_redir (m->line[i] == '>' && m->line[i + 1] != '>')
-#define double_redir (m->line[i] == '>' && m->line[i + 1] == '>')
-#define simple_entry (m->line[i] == '<' && m->line[i + 1] != '<')
-#define double_entry (m->line[i] == '<' && m->line[i + 1] == '<')
-
 int print_prompt(void)
 {
     write(0, "\e[1m",  5);
@@ -30,9 +25,9 @@ void init_symbols(my_env_t *m, int *ret)
     for (; m->line[i] != '\0'; i += 1) {
         if (m->line[i] == ';')
             m->line = my_semicolon(m, ret), i = 0;
-        if (simple_redir || double_redir)
+        if (sr1 || dr2)
             m->line = my_redirection(m, ret, i), i = 0;
-        if (simple_entry || double_entry)
+        if (se1 || se2)
             m->line = my_entry(m, ret, i), i = 0;
         if (m->line[i] == '|')
             m->line = my_pipe(m, ret), i = 0;

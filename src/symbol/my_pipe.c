@@ -6,14 +6,6 @@
 */
 
 #include "../../include/my.h"
-#define simple_redir (m->new_line[i] == '>' && m->new_line[i + 1] != '>')
-#define double_redir (m->new_line[i] == '>' && m->new_line[i + 1] == '>')
-#define simple_entry (m->new_line[i] == '<' && m->new_line[i + 1] != '<')
-#define double_entry (m->new_line[i] == '<' && m->new_line[i + 1] == '<')
-#define simple_redir2 (m->line[i] == '>' && m->line[i + 1] != '>')
-#define double_redir2 (m->line[i] == '>' && m->line[i + 1] == '>')
-#define simple_entry2 (m->line[i] == '<' && m->line[i + 1] != '<')
-#define double_entry2 (m->line[i] == '<' && m->line[i + 1] == '<')
 
 void get_pipe_arg(my_env_t *m, int *ret)
 {

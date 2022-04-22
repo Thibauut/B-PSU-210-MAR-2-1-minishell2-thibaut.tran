@@ -60,8 +60,8 @@ char **get_path(char **env)
 {
     char **path;
     for (int i = 0; env[i] != 0; i += 1) {
-        if (env[i][0] ==  'P' && env[i][1] ==  'A' && env[i][2] ==  'T' ||
-        env[i][3] == 'H' && env[i][4] ==  '=')
+        if (env[i][0] == 'P' && env[i][1] == 'A' && env[i][2] == 'T' ||
+        env[i][3] == 'H' && env[i][4] == '=')
             path = word_to_tab(env[i], ':', 5);
     }
     return (path);

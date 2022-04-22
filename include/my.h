@@ -19,6 +19,18 @@
 #define m_len my_strlen
 #define m_cmp my_strcmp
 #define m_cpy my_strcpy
+#define sr1 (m->line[i] == '>' && m->line[i + 1] != '>')
+#define dr2 (m->line[i] == '>' && m->line[i + 1] == '>')
+#define se1 (m->line[i] == '<' && m->line[i + 1] != '<')
+#define se2 (m->line[i] == '<' && m->line[i + 1] == '<')
+#define simple_redir (m->new_line[i] == '>' && m->new_line[i + 1] != '>')
+#define double_redir (m->new_line[i] == '>' && m->new_line[i + 1] == '>')
+#define simple_entry (m->new_line[i] == '<' && m->new_line[i + 1] != '<')
+#define double_entry (m->new_line[i] == '<' && m->new_line[i + 1] == '<')
+#define simple_redir2 (m->line[i] == '>' && m->line[i + 1] != '>')
+#define double_redir2 (m->line[i] == '>' && m->line[i + 1] == '>')
+#define simple_entry2 (m->line[i] == '<' && m->line[i + 1] != '<')
+#define double_entry2 (m->line[i] == '<' && m->line[i + 1] == '<')
 
 #ifndef MY_H_
     #define MY_H_
